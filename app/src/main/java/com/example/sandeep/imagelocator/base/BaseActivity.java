@@ -1,11 +1,12 @@
 package com.example.sandeep.imagelocator.base;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.sandeep.imagelocator.utilities.CustomDialog;
 
 public abstract class BaseActivity  <DB extends ViewDataBinding, VM extends BaseViewModel> extends AppCompatActivity {
     private DB binding;
@@ -13,7 +14,9 @@ public abstract class BaseActivity  <DB extends ViewDataBinding, VM extends Base
     protected abstract BaseViewModel.Factory factory();
 
     protected abstract Class<VM> viewModelClass();
-
+    protected CustomDialog initCustomDialog(Context context) {
+        return new CustomDialog(context);
+    }
     protected void setView(){
         binding = DataBindingUtil.setContentView(this, getLayoutID());
         binding.setLifecycleOwner(this);
@@ -28,4 +31,5 @@ public abstract class BaseActivity  <DB extends ViewDataBinding, VM extends Base
     public VM getViewModel() {
         return viewModel;
     }
+
 }

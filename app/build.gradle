@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
     dataBinding {
         enabled = true
     }
@@ -37,6 +42,10 @@ dependencies {
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     //Rx Java
-
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    // Java 8
+
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+
 }
